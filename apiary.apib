@@ -8,12 +8,30 @@ FORMAT: 1A
 
 ## HeartBeat [GET]
 + Response 200 (application/json)
-        
-        Your service running normally.
+
+    + Headers
+
+            Access-Control-Allow-Credentials: true
+            location: /metric/cloudwatch/1
+
+    + Body
+
+            {
+                "Result": "Your service running normally."
+            }
 
 + Response 404 (application/json)
-        
-        No such service running running.
+
+    + Headers
+
+            Access-Control-Allow-Credentials: true
+            location: /metric/cloudwatch/1
+
+    + Body
+
+            {
+                "Result": "Srevice is not running right now"
+            }
 
 ## Data structures
 
