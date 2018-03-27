@@ -4,13 +4,19 @@ FORMAT: 1A
     
     Let's get you started with your own API 
 
-## HeartBeat [GET /]
+### Health check [/healthcheck]
 
-+ Response 200 (plain/text)
+## HeartBeat [GET]
++ Response 200 (application/json)
         
-        Your service is running normally.
+        Your service running normally.
+
++ Response 404 (application/json)
+        
+        No such service running running.
 
 ## Data structures
+
 ### Question
 - question: What's your favourite language? (string)
 - `published_at`: `2017-06-17` (string)
@@ -20,24 +26,36 @@ FORMAT: 1A
 ### Choice
 - choice: java (string)
 - url (string)
-- votes (number)
+- votes:100 (number)
 
-## Group Question
+## Group Question management
+  Collection of services which supports question functionality.
+  
+## Question [/questions]
 
-## Question list [/questions]
-
-### Questions [GET]
+### Get all questions [GET]
 
 + Response 200 (application/json)
 
     + Attributes(array[Question])
 
+### Add new question [POST]
+
++ request
+
+    + Attributes(Question)
+
++ Response 202 (application/json)
+
+    + Attributes(Question)
+
 ## Question detail [/questions/{question_id}]
 
-+ Parameters
-    + `question_id`: 1 (required, number) - ID
-
 ### View a question detail [GET]
+
++ Parameters
+
+    + `question_id`: 1 (required, number) - Question identification number.
 
 + Response 200 (application/json)
 
